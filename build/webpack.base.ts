@@ -1,7 +1,7 @@
 import webpack from 'webpack'
 import path from 'path'
 import pageConfig from './page.config'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin' 
 const baseConfig: webpack.Configuration = {
     // 上下文修复
     context: path.resolve(__dirname, '../'),
