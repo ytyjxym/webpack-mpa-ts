@@ -1,16 +1,24 @@
 import webpack from 'webpack'
 import path from 'path'
-import pageConfig from './page.config'
+import pageConfig from './webpack__configs/page.config'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin' 
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import cleanDist from './webpack__utils/cleanDist'
+// build 前删除dist
+cleanDist(path.resolve(__dirname, '../dist'))
+// 入口,html抽离
+const { config, htmls } = pageConfig
+const entry:webpack.Entry = {
+    ...config as webpack.Entry,
+    main:path.resolve(__dirname, '../', './src/main.ts')
+}
+// 配置文件
 const baseConfig: webpack.Configuration = {
-    // 上下文修复
-    context: path.resolve(__dirname, '../'),
-    // 多入口
-    entry: pageConfig as webpack.Entry ,
+    entry,
     output: {
-        path: './dist',
+        path: path.resolve(__dirname, '../','./dist'),
+        publicPath:'/',
         filename: '[name]/[name].entry.js', 
-        chunkFilename: "[id].js"
     },
     module:{
         rules: [
@@ -21,7 +29,7 @@ const baseConfig: webpack.Configuration = {
                     {
                         loader:'babel-loader',
                         options:{
-                            presets:['@babel/preset-env'],
+                            presets:['@babel/preset-env', '@babel/preset-react'],
                             plugins:['@babel/transform-runtime']
                         }
                     }
@@ -34,11 +42,22 @@ const baseConfig: webpack.Configuration = {
                 test:/\.css$/,
                 use:[
                     'css-loader',
-
+                    MiniCssExtractPlugin.loader,
                 ]
 
             },
             // ts文件配置
+            {
+                test:/\.(ts)|(tsx)/,
+                use:[
+                    {
+                        loader:'ts-loader',
+                        options:{
+                            
+                        }
+                    }
+                ]
+            }
         ]
     },
     // 公共包
@@ -56,7 +75,12 @@ const baseConfig: webpack.Configuration = {
     },
     // 插件
     plugins:[
-        
+        new HtmlWebpackPlugin({
+            template:path.resolve(__dirname,'../','./public/template/main.template.html'),
+            filename:'index.html',
+            chunks:['index']
+        }),
+        ...htmls
     ]
 }
 export default baseConfig

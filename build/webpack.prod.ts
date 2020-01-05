@@ -1,7 +1,12 @@
 import { Configuration } from 'webpack'
-
-const devConfig: Configuration = {
+import merge from 'webpack-merge'
+import baseConfig from './webpack.base';
+const devConfig: Configuration = merge(baseConfig, {
     mode: "production",
+    devServer:{
+        port:8888,
+        open:true,
+    },
 
-}
-export default devConfig
+})
+module.exports = devConfig
