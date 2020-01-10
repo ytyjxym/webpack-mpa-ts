@@ -1,5 +1,6 @@
 import React from 'react';
-
+// import './header.scss'
+import { Link } from 'react-router-dom'
 type Iprops = Readonly<any>
 
 export default class Header extends React.Component<Iprops> {
@@ -9,7 +10,10 @@ export default class Header extends React.Component<Iprops> {
     render = () => {
         return (
             <>
-                <div className='header'>header</div>
+                <div className='header'>
+                    <Link to='/'>home</Link>
+                    <Link to='/user'>user</Link>
+                </div>
             </>
         )
     }

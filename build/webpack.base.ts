@@ -22,34 +22,29 @@ const baseConfig: webpack.Configuration = {
     },
     module:{
         rules: [
-            // js文件配置
-            {
-                test: /\.(js)|(jsx)$/,
-                use:[
-                    {
-                        loader:'babel-loader',
-                        options:{
-                            presets:['@babel/preset-env', '@babel/preset-react'],
-                            plugins:['@babel/transform-runtime']
-                        }
-                    }
-                ],
-                exclude: /(node_modules)/,
-                include:/src/
-            },
             // css文件配置
             {
                 test:/\.css$/,
                 use:[
+                    'style-loader',
                     'css-loader',
                     MiniCssExtractPlugin.loader,
                 ]
-
             },
+            // sass文件配置
+            {
+                test:/\.(sass|scss)$/,
+                use:[
+                    'style-loader',
+                    'css-loader',
+                    MiniCssExtractPlugin.loader,
+                    'sass-loader'
+                ]
+            },            
             // ts文件配置
             {
                 test:/\.(ts)|(tsx)/,
-                use:'ts-loader',
+                use:'awesome-typescript-loader',
                 exclude: /(node_modules)/,
             }
         ]

@@ -8,11 +8,14 @@ const devConfig: Configuration = merge(baseConfig, {
         port: 8888,
         open: true,
         hot: true,
+        compress: true, //gzip压缩
+        historyApiFallback: true,
         // noInfo: true
     },
-    devtool:'inline-source-map',
     plugins:[
-        new webpack.HotModuleReplacementPlugin()
-    ]
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
+    ],
+    devtool: 'cheap-module-eval-source-map'
 })
 export default devConfig
