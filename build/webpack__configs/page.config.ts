@@ -23,7 +23,7 @@ const configArr:ConfigArrType = [
 let config:Config = {}
 let htmls:Htmls = []
 configArr.forEach( (page) => {
-    config[page as keyof pageConfig] = path.resolve(__dirname, '../../', `./src/apps/${page}/index.ts`) 
+    config[page as keyof pageConfig] = path.resolve(__dirname, '../../', `./src/apps/${page}/index.tsx`) 
     htmls.push(new HtmlWebpackPlugin({
         template:path.resolve(__dirname, "../../", `./public/template/${page}.template.html`),
         filename:`${page}.html`,

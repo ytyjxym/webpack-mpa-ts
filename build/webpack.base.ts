@@ -10,15 +10,15 @@ cleanDist(path.resolve(__dirname, '../dist'))
 const { config, htmls } = pageConfig
 const entry:webpack.Entry = {
     ...config as webpack.Entry,
-    main:path.resolve(__dirname, '../', './src/main.ts')
+    main:path.resolve(__dirname, '../', './src/main.tsx')
 }
 // 配置文件
 const baseConfig: webpack.Configuration = {
     entry,
     output: {
         path: path.resolve(__dirname, '../','./dist'),
-        publicPath:'/',
-        filename: '[name]/[name].entry.js', 
+        publicPath: '/',
+        filename: '[name]/[name].[hash:8].entry.js', 
     },
     module:{
         rules: [
@@ -49,25 +49,13 @@ const baseConfig: webpack.Configuration = {
             // ts文件配置
             {
                 test:/\.(ts)|(tsx)/,
-                use:[
-                    {
-                        loader:'ts-loader',
-                        options:{
-                            
-                        }
-                    }
-                ]
+                use:'ts-loader',
+                exclude: /(node_modules)/,
             }
         ]
     },
-    // 公共包
-    externals: {
-        react: 'React',
-        lodash: {
-            commonjs: 'lodash',
-            amd: 'lodash',
-            root: '_' // 指向全局变量
-        }
+    resolve: {
+        extensions: ['.js', '.jsx','.ts', '.tsx'], //后缀名自动补全
     },
     // 优化
     optimization:{
@@ -78,7 +66,7 @@ const baseConfig: webpack.Configuration = {
         new HtmlWebpackPlugin({
             template:path.resolve(__dirname,'../','./public/template/main.template.html'),
             filename:'index.html',
-            chunks:['index']
+            chunks:['main']
         }),
         ...htmls
     ]
