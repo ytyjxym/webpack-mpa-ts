@@ -4,7 +4,8 @@ import pageConfig from './webpack__configs/page.config'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import cleanDist from './webpack__utils/cleanDist'
 import TsImport from 'ts-import-plugin'
-
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+const isDev = process.env.NODE_ENV !== 'production'
 // build 前删除dist
 cleanDist(path.resolve(__dirname, '../dist'))
 // 入口,html抽离
@@ -28,16 +29,18 @@ const baseConfig: webpack.Configuration = {
             {
                 test:/\.css$/,
                 use:[
-                    'style-loader',
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
+                    'postcss-loader'
                 ],
             },
             // sass文件配置
             {
                 test:/\.(sass|scss)$/,
                 use:[
-                    'style-loader',
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
+                    'postcss-loader',
                     'sass-loader'
                 ],
             },            
@@ -52,6 +55,7 @@ const baseConfig: webpack.Configuration = {
                                 [
                                     // rxjs 按需加载
                                     {
+                                        libraryDirectory: '../_esm5/internal/operators',
                                         libraryName: 'rxjs/operators',
                                         camel2DashComponentName: false,
                                         transformToDefaultImport: false
@@ -80,16 +84,15 @@ const baseConfig: webpack.Configuration = {
     resolve: {
         extensions: ['.js', '.jsx','.ts', '.tsx'], //后缀名自动补全
     },
-    // 优化
-    optimization:{
-
-    },
     // 插件
     plugins:[
         new HtmlWebpackPlugin({
             template:path.resolve(__dirname,'../','./public/template/main.template.html'),
             filename:'index.html',
-            chunks:['main']
+            chunks:['main'],
+        }),
+        new MiniCssExtractPlugin({
+            filename:'[name]/[name].[hash:8].css'
         }),
         ...htmls
     ]

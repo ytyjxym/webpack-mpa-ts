@@ -10,7 +10,6 @@ const devConfig: Configuration = merge(baseConfig, {
         hot: true,
         compress: true, //gzip压缩
         historyApiFallback: true,
-        // noInfo: true
     },
     plugins:[
         new webpack.HotModuleReplacementPlugin(),
