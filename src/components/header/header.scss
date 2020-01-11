@@ -1,6 +1,15 @@
 .header{
+    position:fixed;
+    top:0;
     background-color: #02653e;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    height:40px;
+    width:100%;
     align-items: center;
+    z-index: 10;
+}
+.bg-header{
+    height:40px;
+    width:100%;
 }

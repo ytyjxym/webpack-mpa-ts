@@ -1,7 +1,6 @@
 import webpack from 'webpack'
 import path from 'path'
 import pageConfig from './webpack__configs/page.config'
-// import MiniCssExtractPlugin from 'mini-css-extract-plugin' 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import cleanDist from './webpack__utils/cleanDist'
 import TsImport from 'ts-import-plugin'
@@ -29,7 +28,6 @@ const baseConfig: webpack.Configuration = {
             {
                 test:/\.css$/,
                 use:[
-                    // MiniCssExtractPlugin.loader,
                     'style-loader',
                     'css-loader',
                 ],
@@ -39,7 +37,6 @@ const baseConfig: webpack.Configuration = {
                 test:/\.(sass|scss)$/,
                 use:[
                     'style-loader',
-                    // MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader'
                 ],
@@ -55,7 +52,6 @@ const baseConfig: webpack.Configuration = {
                                 [
                                     // rxjs 按需加载
                                     {
-                                        libraryDirectory: '../_esm5/internal/operators',
                                         libraryName: 'rxjs/operators',
                                         camel2DashComponentName: false,
                                         transformToDefaultImport: false

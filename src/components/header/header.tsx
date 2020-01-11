@@ -1,5 +1,5 @@
 import React from 'react';
-// import './header.scss'
+import './header.scss'
 import { Link } from 'react-router-dom'
 type Iprops = Readonly<any>
 
@@ -11,9 +11,9 @@ export default class Header extends React.Component<Iprops> {
         return (
             <>
                 <div className='header'>
-                    <Link to='/'>home</Link>
-                    <Link to='/user'>user</Link>
+                    我是头
                 </div>
+                <div className='bg-header'></div>
             </>
         )
     }
