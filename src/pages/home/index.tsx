@@ -1,16 +1,21 @@
 import React from 'react'
 import { Observable } from 'rxjs'
-console.log(Observable)
+import { Button } from 'antd'
 
+Function.apply = Observable.create(1)
 export default class Home extends React.Component{
     readonly state = {
         count:1
     }
-    // add = Rx.Observable.create(this.state.count).subcribe((x:number) => this.setState({count:x+1}))
+    add = () => Observable.create(this.state.count).subscribe((x:number) => this.setState({count: x + 1}))
     render(){
         return (
             <div>
-                {/* <button onClick={this.add}></button> */}
+                <Button
+                    onClick={this.add}
+                    type='danger'
+
+                >1223</Button>
                 {this.state.count}
             </div>
         )

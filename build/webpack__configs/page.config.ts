@@ -1,5 +1,6 @@
 import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+
 // 多页type
 interface pageConfig {
     home:string  | Array<string>,
