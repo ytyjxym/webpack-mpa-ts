@@ -1,12 +1,18 @@
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
-
+import { withRouter } from 'react-router-dom'
 const { Sider } = Layout;
 type Iprops = Readonly<any>
 
-export default class LeftBar extends React.Component<Iprops> {
+class LeftBar extends React.Component<Iprops> {
     constructor(props:Iprops){
         super(props)
+    }
+    toHome = () => {
+      this.props.history.push('/') 
+    }
+    toUser= () => {
+      this.props.history.push('/user') 
     }
     render = () => {
         return (
@@ -22,11 +28,11 @@ export default class LeftBar extends React.Component<Iprops> {
             >
               <div className="logo" />
               <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-                <Menu.Item key="1">
+                <Menu.Item key="1" onClick={this.toHome}>
                   <Icon type="user" />
                   <span className="nav-text">home</span>
                 </Menu.Item>
-                <Menu.Item key="2">
+                <Menu.Item key="2" onClick={this.toUser}>
                   <Icon type="video-camera" />
                   <span className="nav-text">user</span>
                 </Menu.Item>
@@ -35,3 +41,4 @@ export default class LeftBar extends React.Component<Iprops> {
         )
     }
 }
+export default withRouter(LeftBar as any)

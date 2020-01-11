@@ -1,7 +1,7 @@
 import { Configuration } from 'webpack'
 import merge from 'webpack-merge'
 import webpack from 'webpack'
-import baseConfig from './webpack.base';
+import baseConfig from './webpack.base.spa'
 const devConfig: Configuration = merge(baseConfig, {
     mode: "development",
     devServer:{

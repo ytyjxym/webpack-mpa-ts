@@ -1,14 +1,16 @@
 {
-  "name": "a",
+  "name": "webpack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development TS_NODE_PROJECT=\"build/tsconfig-for-webpack-config.json\" webpack-dev-server  --config build/webpack.dev.ts ",
-    "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"build/tsconfig-for-webpack-config.json\" webpack --config build/webpack.prod.ts ",
+    "dev:spa": "cross-env NODE_ENV=development TS_NODE_PROJECT=\"build/tsconfig-for-webpack-config.json\" webpack-dev-server  --config build/webpack_spa/webpack.dev.spa.ts ",
+    "dev:mpa": "cross-env NODE_ENV=development TS_NODE_PROJECT=\"build/tsconfig-for-webpack-config.json\" webpack-dev-server  --config build/webpack_mpa/webpack.dev.mpa.ts ",
+    "build:mpa": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"build/tsconfig-for-webpack-config.json\" webpack --config build/webpack_mpa/webpack.prod.mpa.ts ",
+    "build:spa": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"build/tsconfig-for-webpack-config.json\" webpack --config build/webpack_spa/webpack.prod.spa.ts ",
     "server": "live-server ./ --port=8888"
   },
-  "author": "",
+  "author": "xym",
   "license": "ISC",
   "devDependencies": {
     "@types/autoprefixer": "^9.6.1",
@@ -38,6 +40,7 @@
     "sass-loader": "^8.0.1",
     "start-server-webpack-plugin": "^2.2.5",
     "style-loader": "^1.1.2",
+    "svg-inline-loader": "^0.8.0",
     "terser-webpack-plugin": "^2.3.2",
     "ts-import-plugin": "^1.6.2",
     "ts-loader": "^6.2.1",

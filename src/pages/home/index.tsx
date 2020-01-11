@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'antd'
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators'
-import './home.scss'
+import type from './home.module.scss'
 of(1,2,3).pipe(map(x => x + '!!!')).subscribe(x=>console.log(x))
 
 interface IState {
@@ -20,6 +20,7 @@ export default class Home extends React.Component<{},IState>{
     render(){
         return (
             <>
+            <div className={type.heade}>123</div>
                 <Button
                     onClick={this.add}
                     type='danger'

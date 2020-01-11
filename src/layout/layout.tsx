@@ -18,6 +18,9 @@ export default class Layout extends React.Component<Iprops> {
                 <LeftBar /> 
                 <Ly style={{marginLeft:200}}>
                     <Content style={{margin: '24px 16px 0'}}>
+                        {
+                            this.props.children
+                        }
                     </Content>
                 </Ly>
                 <Footer/>
