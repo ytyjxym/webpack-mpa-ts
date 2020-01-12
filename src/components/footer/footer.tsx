@@ -6,7 +6,6 @@ const Footer:React.FC = (props:Iprops) => {
         return (
             <>
                 <div className='footer'>footer</div>
-                <div className='bg-footer'></div>
             </>
         )
 }

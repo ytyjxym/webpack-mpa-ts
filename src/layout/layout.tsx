@@ -15,9 +15,9 @@ export default class Layout extends React.Component<Iprops> {
         return (
             <Ly>
                 <Header/>
-                <LeftBar /> 
-                <Ly style={{marginLeft:200}}>
-                    <Content style={{margin: '24px 16px 0'}}>
+                <Ly  style={{position:'fixed',left:0,right:0,top:40,bottom:50}}>
+                    <LeftBar /> 
+                    <Content style={{overflow:'auto',position:'absolute',top:0,left:200,bottom:0,right:0}}>
                         {
                             this.props.children
                         }

@@ -16,28 +16,18 @@ class LeftBar extends React.Component<Iprops> {
     }
     render = () => {
         return (
-            <Sider
-              style={{
-                overflow: 'auto',
-                height: '100vh',
-                position: 'fixed',
-                left: 0,
-                bottom: '50px',
-                top:'40px'
-              }}
-            >
-              <div className="logo" />
-              <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-                <Menu.Item key="1" onClick={this.toHome}>
-                  <Icon type="user" />
-                  <span className="nav-text">home</span>
-                </Menu.Item>
-                <Menu.Item key="2" onClick={this.toUser}>
-                  <Icon type="video-camera" />
-                  <span className="nav-text">user</span>
-                </Menu.Item>
-              </Menu>
-            </Sider>
+          <Sider style={{width:200,overflow:'auto',position:'absolute',top:0,left:0,bottom:0}}>
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+              <Menu.Item key="1" onClick={this.toHome}>
+                <Icon type="user" />
+                <span className="nav-text">home</span>
+              </Menu.Item>
+              <Menu.Item key="2" onClick={this.toUser}>
+                <Icon type="video-camera" />
+                <span className="nav-text">user</span>
+              </Menu.Item>
+            </Menu>
+          </Sider>
         )
     }
 }

@@ -13,18 +13,25 @@ export default class Home extends React.Component<{},IState>{
     readonly state:IState = {
         count:[1,2,3]
     }
-    
-    add = () => {
+
+    add(time:number) {
+        let a = of(this.state).toPromise().then(res=>console.log(res))
+        console.log(a);
+        
         let { count } = this.state
+        this.setState({count:count.concat(time++)})
     }
     render(){
         return (
             <>
-            <div className={type.heade}>123</div>
+            <div className={type.heade}>
+                {
+                    this.state.count
+                }
+            </div>
                 <Button
-                    onClick={this.add}
+                    onClick={this.add.bind(this,1)}
                     type='danger'
-
                 >1223</Button>
                 {this.state.count}
             </>
