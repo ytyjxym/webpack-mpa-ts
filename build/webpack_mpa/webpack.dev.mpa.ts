@@ -9,6 +9,8 @@ const devConfig: Configuration = merge(baseConfig, {
         open: true,
         hot: true,
         compress: true, //gzip压缩
+        clientLogLevel: 'none',
+        stats: 'errors-only',
         historyApiFallback: true,
     },
     plugins:[
