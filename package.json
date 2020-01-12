@@ -43,7 +43,6 @@
     "svg-inline-loader": "^0.8.0",
     "terser-webpack-plugin": "^2.3.2",
     "ts-import-plugin": "^1.6.2",
-    "ts-loader": "^6.2.1",
     "ts-node": "^8.5.4",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.7.4",
