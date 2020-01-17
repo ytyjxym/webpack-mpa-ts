@@ -17,19 +17,9 @@ const baseConfig: webpack.Configuration = {
     },
     module:{
         rules: [
-            // css文件配置
+            // sass/css文件配置
             {
-                test:/\.css$/,
-                exclude: /\.module\.css$/,
-                use:[
-                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader'
-                ],
-            },
-            // sass文件配置
-            {
-                test:/\.(sass|scss)$/,
+                test:/\.(css|sass|scss)$/,
                 exclude: /\.module\.(scss|sass)$/,
                 use:[
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -39,28 +29,14 @@ const baseConfig: webpack.Configuration = {
                 ],
             }, 
             {
-                // CSS modules
-                test: /\.module\.css$/,
+                // SCSS/CSS modules
+                test: /\.module\.(css|scss|sass)$/,
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
-                        modules: true,
-                        },
-                    },
-                  'postcss-loader',
-                ]
-            },     
-            {
-                // SCSS modules
-                test: /\.module\.(scss|sass)$/,
-                use: [
-                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                        modules: true,
+                            modules: true,
                         },
                     },
                   'postcss-loader',
