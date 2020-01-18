@@ -17,13 +17,13 @@ class LeftBar extends React.Component<Iprops> {
     render = () => {
         return (
           <Sider style={{width:200,overflow:'auto',position:'absolute',top:0,left:0,bottom:0}}>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-              <Menu.Item key="1" onClick={this.toHome}>
-                <Icon type="user" />
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['home']}>
+              <Menu.Item key="home" onClick={this.toHome}>
+                <Icon type="home" />
                 <span className="nav-text">home</span>
               </Menu.Item>
-              <Menu.Item key="2" onClick={this.toUser}>
-                <Icon type="video-camera" />
+              <Menu.Item key="user" onClick={this.toUser}>
+                <Icon type="user" />
                 <span className="nav-text">user</span>
               </Menu.Item>
             </Menu>
