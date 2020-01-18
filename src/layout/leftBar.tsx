@@ -1,12 +1,19 @@
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
-import { withRouter } from 'react-router-dom'
-const { Sider } = Layout;
-type Iprops = Readonly<any>
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+const { Sider } = Layout
+interface typeProps {
+  list?: Array<string | number | object>
+}
+type Iprops = RouteComponentProps & Readonly<typeProps>
+
 
 class LeftBar extends React.Component<Iprops> {
     constructor(props:Iprops){
         super(props)
+    }
+    componentDidMount(){
+      console.log(this.props)
     }
     toHome = () => {
       this.props.history.push('/') 
@@ -31,4 +38,4 @@ class LeftBar extends React.Component<Iprops> {
         )
     }
 }
-export default withRouter(LeftBar as any)
+export default withRouter(LeftBar)
