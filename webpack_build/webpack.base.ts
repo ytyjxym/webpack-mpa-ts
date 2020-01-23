@@ -2,11 +2,15 @@ import webpack from 'webpack'
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import cleanDist from './webpack__utils/cleanDist'
-import TsImport from 'ts-import-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import babelConfig from './webpack__configs/babel.config'
+import tsConfig from './webpack__configs/ts.config'
 const isDev = process.env.NODE_ENV !== 'production'
-// build 前删除dist
+// build 前删除dist和lib
 cleanDist(path.resolve(__dirname, '../dist'))
+cleanDist(path.resolve(__dirname, '../lib'))
+
 // 配置文件
 const baseConfig: webpack.Configuration = {
     output: {
@@ -70,36 +74,7 @@ const baseConfig: webpack.Configuration = {
             // ts文件配置
             {
                 test:/\.(ts)|(tsx)/,
-                use:[{
-                    loader:'awesome-typescript-loader',
-                    options: {
-                        getCustomTransformers: () => ({
-                          before: [ TsImport(
-                                [
-                                    // rxjs 按需加载
-                                    {
-                                        libraryDirectory: '../_esm5/internal/operators',
-                                        libraryName: 'rxjs/operators',
-                                        camel2DashComponentName: false,
-                                        transformToDefaultImport: false
-                                    },
-                                    {
-                                        libraryDirectory: '../_esm5/internal/observable',
-                                        libraryName: 'rxjs',
-                                        camel2DashComponentName: false,
-                                        transformToDefaultImport: false,
-                                    },
-                                    // antd 按需加载
-                                    {
-                                        libraryName: 'antd',
-                                        libraryDirectory: 'es',
-                                        style: 'css',
-                                    }
-                                ])
-                            ]
-                        }),
-                    },
-                }],
+                use:[babelConfig,tsConfig],
                 exclude: /(node_modules)/,
             },
             // 文件loader
@@ -126,6 +101,7 @@ const baseConfig: webpack.Configuration = {
         new MiniCssExtractPlugin({
             filename:'[name]/[name].[hash:8].css'
         }),
+        new ForkTsCheckerWebpackPlugin()
     ]
 }
 export default baseConfig
