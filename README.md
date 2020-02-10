@@ -3,7 +3,7 @@
 
 
 ## 介绍
-
+暂且能用的webpack—ts吧
 ract + ts + webpack + antd + rxjs
 
 ## 运行
