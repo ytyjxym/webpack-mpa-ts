@@ -73,7 +73,7 @@ const baseConfig: webpack.Configuration = {
             },          
             // ts文件配置
             {
-                test:/\.(ts)|(tsx)/,
+                test:/\.(js)|(jsx)|(ts)|(tsx)/,
                 // 配置抽离
                 use:[babelConfig,tsConfig],
                 exclude: /(node_modules)/,
