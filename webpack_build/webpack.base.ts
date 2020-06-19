@@ -6,6 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import babelConfig from './webpack__configs/babel.config'
 import tsConfig from './webpack__configs/ts.config'
+import WorkboxPlugin from 'workbox-webpack-plugin'
 const isDev = process.env.NODE_ENV !== 'production'
 // build 前删除dist和lib
 cleanDist(path.resolve(__dirname, '../dist'))
@@ -50,7 +51,7 @@ const baseConfig: webpack.Configuration = {
                     {
                         loader: 'css-loader',
                         options: {
-                        modules: true,
+                            modules: true,
                         },
                     },
                   'postcss-loader',
@@ -102,7 +103,11 @@ const baseConfig: webpack.Configuration = {
         new MiniCssExtractPlugin({
             filename:'[name]/[name].[hash:8].css'
         }),
-        new ForkTsCheckerWebpackPlugin()
+        new ForkTsCheckerWebpackPlugin(),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
+        })
     ]
 }
 export default baseConfig

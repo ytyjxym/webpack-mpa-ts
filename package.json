@@ -8,13 +8,16 @@
     "dev:mpa": "cross-env NODE_ENV=development TS_NODE_PROJECT=\"webpack_build/tsconfig-for-webpack-config.json\" webpack-dev-server  --config webpack_build/webpack_mpa/webpack.dev.mpa.ts ",
     "build:mpa": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"webpack_build/tsconfig-for-webpack-config.json\" webpack --config webpack_build/webpack_mpa/webpack.prod.mpa.ts ",
     "build:spa": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"webpack_build/tsconfig-for-webpack-config.json\" webpack --config webpack_build/webpack_spa/webpack.prod.spa.ts ",
-    "server": "live-server ./ --port=8888"
+    "server": "live-server ./ --port=8888",
+    "test": "jest"
   },
   "author": "xym",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.8.3",
+    "@babel/runtime": "^7.10.2",
     "@types/autoprefixer": "^9.6.1",
     "@types/html-webpack-plugin": "^3.2.1",
     "@types/mini-css-extract-plugin": "^0.9.0",
@@ -29,12 +32,15 @@
     "@types/webpack": "^4.41.1",
     "@types/webpack-dev-server": "^3.9.0",
     "@types/webpack-merge": "^4.1.5",
+    "@types/workbox-webpack-plugin": "^5.1.1",
     "autoprefixer": "^9.7.3",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.0.6",
     "cross-env": "^6.0.3",
     "css-loader": "^3.4.1",
     "fork-ts-checker-webpack-plugin": "^4.0.2",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^26.0.1",
     "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.0",
@@ -56,7 +62,8 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "workbox-webpack-plugin": "^5.1.3"
   },
   "dependencies": {
     "@reactivex/rxjs": "^6.5.4",
