@@ -20,6 +20,12 @@ const baseConfig: webpack.Configuration = {
         filename: '[name]/[name].[hash:8].entry.js', 
         chunkFilename: '[name]/[name].[hash:9].entry.js',
     },
+    resolve: {
+        alias: {
+          "@": path.resolve(__dirname, '../','./src'),
+        },
+        extensions: ['js', 'jsx', 'ts', 'tsx', 'sass', 'scss'],
+      },
     module:{
         rules: [
             // css文件配置
@@ -65,7 +71,7 @@ const baseConfig: webpack.Configuration = {
                     {
                         loader: 'css-loader',
                         options: {
-                        modules: true,
+                            modules: true,
                         },
                     },
                   'postcss-loader',
@@ -77,7 +83,7 @@ const baseConfig: webpack.Configuration = {
                 test:/\.(js)|(jsx)|(ts)|(tsx)/,
                 // 配置抽离
                 use:[babelConfig,tsConfig],
-                exclude: /(node_modules)/,
+                exclude: /(node_modules|public)/,
             },
             // 文件loader
             {
@@ -89,9 +95,6 @@ const baseConfig: webpack.Configuration = {
                 loader: 'svg-inline-loader'
             }
         ]
-    },
-    resolve: {
-        extensions: ['.js', '.jsx','.ts', '.tsx'], //后缀名自动补全
     },
     // 插件
     plugins:[

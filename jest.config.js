@@ -16,6 +16,7 @@ module.exports = {
     "^@/(.*)$": "<rootDir>/src/$1"
   },
   testMatch: [
+    "**/tests/**/*.[jt]s?(x)",
     "**/__tests__/**/*.[jt]s?(x)",
     "**/?(*.)+(spec|test).[tj]s?(x)"
   ],
