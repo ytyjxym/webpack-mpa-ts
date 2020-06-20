@@ -33,6 +33,7 @@ const baseConfig: webpack.Configuration = {
     resolve: {
         alias: {
           "@": path.resolve(__dirname, '../','./src'),
+          "~": path.resolve(__dirname, '../','./public'),
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.sass', '.scss'],
       },
