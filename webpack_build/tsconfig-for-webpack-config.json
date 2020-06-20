@@ -4,5 +4,6 @@
       "target": "es5",
       "esModuleInterop": true
     },
+    "include": ["webpack_build"],
     "exclude": ["node_modules"]
   }

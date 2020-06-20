@@ -8,9 +8,9 @@ const devConfig: Configuration = merge(baseConfig, {
         port: 8888,
         open: true,
         hot: true,
-        compress: true, //gzip压缩
-        clientLogLevel: 'none',
-        stats: 'errors-warning',
+        // compress: true, //gzip压缩
+        clientLogLevel: 'silent',
+        stats: 'errors-warnings',
         historyApiFallback: true,
     },
     plugins:[

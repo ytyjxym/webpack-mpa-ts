@@ -7,6 +7,8 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import babelConfig from './webpack__configs/babel.config'
 import tsConfig from './webpack__configs/ts.config'
 import WorkboxPlugin from 'workbox-webpack-plugin'
+import TerserWebpackPlugin from 'terser-webpack-plugin'
+
 const isDev = process.env.NODE_ENV !== 'production'
 // build 前删除dist和lib
 cleanDist(path.resolve(__dirname, '../dist'))
@@ -28,7 +30,7 @@ const baseConfig: webpack.Configuration = {
           chunks: 'all',
           name: false,
         }
-      }
+      },
     resolve: {
         alias: {
           "@": path.resolve(__dirname, '../','./src'),
