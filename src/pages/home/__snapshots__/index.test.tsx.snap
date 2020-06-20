@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test 1`] = `
+Array [
+  <div
+    className="heade"
+  >
+    1
+    2
+    3
+  </div>,
+  <button
+    className="ant-btn ant-btn-danger"
+    onClick={[Function]}
+    type="button"
+  >
+    <span>
+      1223
+    </span>
+  </button>,
+  "1",
+  "2",
+  "3",
+]
+`;
