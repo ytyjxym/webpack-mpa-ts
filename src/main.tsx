@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import RootRoute from './route/index'
-import './assets/style/common.scss'
+import RootRoute from '@/route/index'
+import '@/assets/style/common.scss'
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js').then(registration => {

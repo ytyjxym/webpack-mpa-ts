@@ -20,11 +20,20 @@ const baseConfig: webpack.Configuration = {
         filename: '[name]/[name].[hash:8].entry.js', 
         chunkFilename: '[name]/[name].[hash:9].entry.js',
     },
+    optimization: {
+        minimizer: [
+            new TerserWebpackPlugin(),
+        ],
+        splitChunks: {
+          chunks: 'all',
+          name: false,
+        }
+      }
     resolve: {
         alias: {
           "@": path.resolve(__dirname, '../','./src'),
         },
-        extensions: ['js', 'jsx', 'ts', 'tsx', 'sass', 'scss'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.sass', '.scss'],
       },
     module:{
         rules: [
@@ -80,10 +89,10 @@ const baseConfig: webpack.Configuration = {
             },          
             // ts文件配置
             {
-                test:/\.(js)|(jsx)|(ts)|(tsx)/,
+                test:/\.(js|jsx|ts|tsx)$/,
                 // 配置抽离
                 use:[babelConfig,tsConfig],
-                exclude: /(node_modules|public)/,
+                exclude: /node_modules/,
             },
             // 文件loader
             {
@@ -110,6 +119,7 @@ const baseConfig: webpack.Configuration = {
         new WorkboxPlugin.GenerateSW({
             clientsClaim: true,
             skipWaiting: true,
+            maximumFileSizeToCacheInBytes: 40 * 1024 * 1024
         })
     ]
 }

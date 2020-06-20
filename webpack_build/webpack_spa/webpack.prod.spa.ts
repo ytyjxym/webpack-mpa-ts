@@ -5,11 +5,6 @@ import ZipCss from 'optimize-css-assets-webpack-plugin'
 import TerserWebpackPlugin from 'terser-webpack-plugin'
 const devConfig: Configuration = merge(baseConfig, {
     mode: "production",
-    optimization: {
-        minimizer: [
-            new TerserWebpackPlugin(),
-        ]
-    },
     plugins:[
         new webpack.LoaderOptionsPlugin({
              minimize: true

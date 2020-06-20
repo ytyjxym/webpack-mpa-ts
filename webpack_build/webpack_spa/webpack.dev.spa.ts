@@ -10,7 +10,7 @@ const devConfig: Configuration = merge(baseConfig, {
         hot: true,
         compress: true, //gzip压缩
         clientLogLevel: 'none',
-        stats: 'errors-only',
+        stats: 'errors-warning',
         historyApiFallback: true,
     },
     plugins:[
