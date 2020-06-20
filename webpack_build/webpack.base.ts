@@ -19,8 +19,8 @@ const baseConfig: webpack.Configuration = {
     output: {
         path: path.resolve(__dirname, '../','./dist'),
         publicPath: '/',
-        filename: '[name]/[name].[hash:8].entry.js', 
-        chunkFilename: '[name]/[name].[hash:9].entry.js',
+        filename: 'static/[name].[hash:9].entry.js', 
+        chunkFilename: 'static/[name].[hash:9].chunk.js',
     },
     optimization: {
         minimizer: [
@@ -28,7 +28,6 @@ const baseConfig: webpack.Configuration = {
         ],
         splitChunks: {
           chunks: 'all',
-          name: false,
         }
       },
     resolve: {
@@ -112,15 +111,15 @@ const baseConfig: webpack.Configuration = {
         new HtmlWebpackPlugin({
             template:path.resolve(__dirname,'../','./public/template/main.template.html'),
             filename:'index.html',
-            chunks:['main'],
+            // chunks:['main'],
         }),
         new MiniCssExtractPlugin({
-            filename:'[name]/[name].[hash:8].css'
+            filename:'static/[name].[hash:9].css'
         }),
         new ForkTsCheckerWebpackPlugin(),
         new WorkboxPlugin.GenerateSW({
             clientsClaim: true,
-            skipWaiting: true,
+            // skipWaiting: true,
             maximumFileSizeToCacheInBytes: 40 * 1024 * 1024
         })
     ]

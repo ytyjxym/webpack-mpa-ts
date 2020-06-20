@@ -28,7 +28,7 @@ configArr.forEach( (page) => {
     htmls.push(new HtmlWebpackPlugin({
         template:path.resolve(__dirname, "../../", `./public/template/${page}.template.html`),
         filename:`${page}.html`,
-        chunks:[page]
+        // chunks:[page]
     }))
 })
 
